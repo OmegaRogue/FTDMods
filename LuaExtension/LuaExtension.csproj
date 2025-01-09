@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{A7C2DBFE-809C-41AB-BE11-22A9751F3BF8}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>LuaExtension</RootNamespace>
+        <AssemblyName>LuaExtension</AssemblyName>
+        <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup>
+      <PostBuildEvent>cp "/mnt/fastbulk/projects/FTDMods/LuaExtension/bin/Debug/LuaExtension.dll" "${ProjectDir}/../../../../../home/omegarogue/From The Depths/Mods/LuaExtension/${TargetFileName}"
+cp "/mnt/fastbulk/projects/FTDMods/LuaExtension/bin/Debug/0Harmony.dll" "${ProjectDir}/../../../../../home/omegarogue/From The Depths/Mods/LuaExtension/0Harmony.dll"
+</PostBuildEvent>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Common">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Common.dll</HintPath>
+        </Reference>
+        <Reference Include="Core">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Core.dll</HintPath>
+        </Reference>
+        <Reference Include="DataManagement">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\DataManagement.dll</HintPath>
+        </Reference>
+        <Reference Include="Ftd">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Ftd.dll</HintPath>
+        </Reference>
+        <Reference Include="GridCasts">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\GridCasts.dll</HintPath>
+        </Reference>
+        <Reference Include="Localisation">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Localisation.dll</HintPath>
+        </Reference>
+        <Reference Include="Modding">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Modding.dll</HintPath>
+        </Reference>
+        <Reference Include="MoonSharp.Interpreter">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\MoonSharp.Interpreter.dll</HintPath>
+        </Reference>
+        <Reference Include="netstandard">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\netstandard.dll</HintPath>
+        </Reference>
+        <Reference Include="sLua">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\sLua.dll</HintPath>
+        </Reference>
+        <Reference Include="sLuaFtd">
+            <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\sLuaFtd.dll</HintPath>
+        </Reference>
+        <Reference Include="sLuaFtdGenerated">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\sLuaFtdGenerated.dll</HintPath>
+        </Reference>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Xml"/>
+        <Reference Include="Ui">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Ui.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="BetterLuaBinding.cs" />
+        <Compile Include="FtDInterface.cs" />
+        <Compile Include="LuaBox.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="HarmonyX" Version="2.13.0" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>

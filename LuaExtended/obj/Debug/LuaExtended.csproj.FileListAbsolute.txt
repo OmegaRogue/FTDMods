@@ -1,0 +1,2 @@
+/mnt/fastbulk/projects/FTDMods/LuaExtended/obj/Debug/LuaExtended.csproj.AssemblyReference.cache
+/mnt/fastbulk/projects/FTDMods/LuaExtended/obj/Debug/LuaExtended.csproj.CoreCompileInputs.cache
