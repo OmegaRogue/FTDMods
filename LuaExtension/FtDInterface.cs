@@ -5,6 +5,7 @@ using BrilliantSkies.Modding;
 using HarmonyLib;
 
 using MoonSharp.Interpreter;
+using MoonSharp.Interpreter.Interop;
 
 using UnityEngine; // It contains 'GamePlugin' and 'GamePlugin_PostLoad'
 
@@ -27,6 +28,7 @@ namespace LuaExtension
 		/// </summary>
 		public void OnLoad()
 		{
+			UserData.RegistrationPolicy = InteropRegistrationPolicy.Automatic;
 			UserData.RegisterAssembly();
 			UserData.RegisterType<Vector2>();
 			UserData.RegisterType<Vector3>();

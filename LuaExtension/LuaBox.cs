@@ -31,6 +31,11 @@ namespace LuaExtension
 	public new           bool             Running; 
 	public               Script           Runtime = new();
 
+	// private readonly MemoryStream _stdOut       = new();
+	// private readonly MemoryStream _stdErr       = new();
+	// private          StreamReader _stdOutReader = null!;
+	// private          StreamReader _stdErrReader = null!;
+
 	static BetterLuaBox() => _locFile = Loc.GetFile("Control_LUA_Box");
 	public override void BlockStart()
 	{
@@ -38,9 +43,14 @@ namespace LuaExtension
 		binding                    = new BetterLuaBinding(MainConstruct as MainConstruct);
 		Runtime.Globals["Vector3"] = (Func<float,float,float,Vector3>)Vector3New;
 		Runtime.Globals["Mathf"]   = typeof(Mathf);
+
+		Runtime.Options.DebugPrint = s => binding.LogMessages.Add(s);
+		// IoModule.SetDefaultFile(Runtime, MoonSharp.Interpreter.Platforms.StandardFileType.StdOut, _stdOut);
+		// IoModule.SetDefaultFile(Runtime, MoonSharp.Interpreter.Platforms.StandardFileType.StdErr, _stdErr);
 		
-		// Runtime.Options.DebugPrint = Debug.Log;
-		// IoModule.SetDefaultFile(Runtime, MoonSharp.Interpreter.Platforms.StandardFileType.StdOut, );
+		// _stdOutReader = new StreamReader(_stdOut);
+		// _stdErrReader = new StreamReader(_stdErr);
+		
 		InitialiseLua();
 	}
 	
@@ -52,21 +62,21 @@ namespace LuaExtension
 		binding = binding.CleanUp();
 	}
 
-	public string SaveScript()
+	public new async Awaitable<string> SaveScript()
 	{
 		var path = Get.ProfilePaths.LuaDir().Append(
-			$"{(object)MainConstruct.UniqueId}_{(object)IdSet.Id}_{(object)DateTime.Now:yyyyMMdd}.txt").ToString();
+			$"{(object)MainConstruct.UniqueId}_{(object)IdSet.Id}_{(object)DateTime.Now:yyyyMMdd}.lua").ToString();
 		var text = File.CreateText(path);
-		text.WriteLine(_code);
+		await text.WriteLineAsync(_code);
 		text.Close();
 		return path;
 	}
 
-	private void FixedStep(ITimeStep dt)
+	private async Awaitable FixedStep(ITimeStep dt)
 	{
 		if (!Running)
 			return;
-		RunLuaUpdate();
+		await RunLuaUpdate();
 	}
 
 	public override string SetText(string newText)
@@ -86,7 +96,7 @@ namespace LuaExtension
 
 	public override void Secondary(Transform T)
 	{
-		LuaEditor.Instance.ActivateGui(this, GuiActivateType.Force);
+		BetterLuaEditor.Instance.ActivateGui(this, GuiActivateType.Force);
 	}
 
 	public override InteractionReturn Secondary()
@@ -136,6 +146,23 @@ namespace LuaExtension
 			ActiveBox = this;
 			_environment = LuaMaster.Instance.EnvironmentCounter++.ToString();
 			var str = $@"
+			-- Print contents of `tbl`, with indentation.
+			-- `indent` sets the initial level of indentation.
+			function tprint (tbl, indent)
+			  if not indent then indent = 0 end
+			  for k, v in pairs(tbl) do
+			    formatting = string.rep(""  "", indent) .. k .. "": ""
+			    if type(v) == ""table"" then
+			      print(formatting)
+			      tprint(v, indent+1)
+			    elseif type(v) == 'boolean' then
+			      print(formatting .. tostring(v))      
+			    else
+			      print(formatting .. v)
+			    end
+			  end
+			end
+
 			sandbox_env{_environment} = 
 			{{
 				ipairs = ipairs,
@@ -214,15 +241,20 @@ namespace LuaExtension
 			end
 			";
 			Runtime.DoString(str);
+			// binding.LogMessages.Add(_stdOutReader.ReadToEnd());
+			// ErrorStack = _stdErrReader.ReadToEnd();
+			
 			// LuaSvr.mainState.doString(str);
 		}
 		catch (ScriptRuntimeException ex)
 		{
+			// ErrorStack = _stdErrReader.ReadToEnd();
 			Debug.LogError(ex.DecoratedMessage);
+			ErrorStack =  ex.DecoratedMessage + ex.HelpLink + ex.Message + ex.StackTrace;
 		}
 	}
 
-	public void RunLuaUpdate()
+	public async Awaitable RunLuaUpdate()
 	{
 		if (Net.IsClient)
 		{
@@ -235,40 +267,51 @@ namespace LuaExtension
 				var realtimeSinceStartup = Time.realtimeSinceStartup;
 				if (!string.IsNullOrEmpty(_environment))
 				{
-					ActiveBox         = this;
-					Runtime.Call(Runtime.Globals["RunUpdate"], binding);
+					ErrorStack = "";
+					ActiveBox       = this;
+					await Runtime.CallAsync(Runtime.Globals["RunUpdate"], binding);
+					
 					// Runtime.Call(Runtime.Globals[$"EnterSandboxRunUpdate{_environment}"], binding);
 					// LuaSvr.mainState.errorDelegate = UpdateErrorStack;
 					 // LuaSvr.mainState.getFunction("EnterSandboxRunUpdate" + _environment).call(binding);
 				}
 				ProcessingTime = Time.realtimeSinceStartup - realtimeSinceStartup;
+				// binding.LogMessages.Add(_stdOutReader.ReadToEnd());
+				// ErrorStack = _stdErrReader.ReadToEnd();
 			}
 			catch (ScriptRuntimeException ex)
 			{
 				ProcessingTime = 0.0f;
 				ErrorStack     = ex.HelpLink + ex.Message + ex.StackTrace;
 				Running        = false;
+				ErrorStack     = ex.DecoratedMessage + ex.HelpLink + ex.Message + ex.StackTrace;
+				// ErrorStack     = _stdErrReader.ReadToEnd();
 				Debug.LogError(ex.DecoratedMessage);
 				GUISoundManager.GetSingleton().PlayFailure();
 			}
 		}
 	}
 
-	public void SetLuaCode()
+	public async Awaitable SetLuaCode()
 	{
 		try
 		{
 			if (string.IsNullOrEmpty(_environment))
 				return;
 			SaveScript();
+			ErrorStack = "";
 			// LuaSvr.mainState.errorDelegate = UpdateErrorStack;
 			// Runtime.Call(Runtime.Globals[$"run_sandboxstring{_environment}"], _code);
-			Runtime.DoString(_code);
+			await Runtime.DoStringAsync(_code);
 			// LuaSvr.mainState.getFunction("run_sandboxstring" + _environment).call(_code);
 			Running = true;
+			// binding.LogMessages.Add(_stdOutReader.ReadToEnd());
+			// ErrorStack = _stdErrReader.ReadToEnd();
 		}
 		catch (ScriptRuntimeException ex)
 		{
+			// ErrorStack = _stdErrReader.ReadToEnd();
+			ErrorStack =  ex.DecoratedMessage + ex.HelpLink + ex.Message + ex.StackTrace;
 			Debug.LogError(ex.HelpLink + ex.Message + ex.StackTrace);
 			Running = false;
 			GUISoundManager.GetSingleton().PlayFailure();

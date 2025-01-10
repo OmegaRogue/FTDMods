@@ -13,8 +13,6 @@
         "packagesPath": "/home/omegarogue/.nuget/packages/",
         "outputPath": "/mnt/fastbulk/projects/FTDMods/LuaExtension/obj/",
         "projectStyle": "PackageReference",
-        "skipContentFileWrite": true,
-        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "/home/omegarogue/.nuget/NuGet/NuGet.Config"
         ],
@@ -26,29 +24,26 @@
         },
         "frameworks": {
           "net452": {
+            "targetAlias": "net452",
             "projectReferences": {}
           }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
         }
       },
       "frameworks": {
         "net452": {
+          "targetAlias": "net452",
           "dependencies": {
             "HarmonyX": {
               "target": "Package",
               "version": "[2.13.0, )"
             }
-          }
-        }
-      },
-      "runtimes": {
-        "win": {
-          "#import": []
-        },
-        "win-x64": {
-          "#import": []
-        },
-        "win-x86": {
-          "#import": []
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/mono/msbuild/Current/bin/RuntimeIdentifierGraph.json"
         }
       }
     }
