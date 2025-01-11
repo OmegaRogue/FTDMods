@@ -1,0 +1,3 @@
+[submodule "LuaExtension/Lua"]
+	path = LuaExtension/Lua
+	url = git@github.com:OmegaRogue/FTDLuaRef.git
