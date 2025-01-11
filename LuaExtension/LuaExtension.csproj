@@ -92,9 +92,9 @@
       <ReferencePathWithRefAssemblies Update="\home\omegarogue\.nuget\packages\harmonyx\2.13.0\lib\netstandard2.0\0Harmony.dll" />
     </ItemGroup>
     <ItemGroup>
-      <None Remove="Lua\environment.lua" />
-      <EmbeddedResource Include="Lua\environment.lua" />
       <None Remove="Lua\eventdriver.lua" />
+      <None Remove="Lua\environment.d.lua" />
+      <EmbeddedResource Include="Lua\environment.d.lua" />
     </ItemGroup>
 <!--    <ItemGroup>-->
 <!--      <Compile Include="Properties\AssemblyInfo.cs" />-->
