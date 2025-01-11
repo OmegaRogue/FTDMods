@@ -17,14 +17,14 @@
           "/home/omegarogue/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net452"
+          "netstandard2.1"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net452": {
-            "targetAlias": "net452",
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
             "projectReferences": {}
           }
         },
@@ -35,12 +35,33 @@
         }
       },
       "frameworks": {
-        "net452": {
-          "targetAlias": "net452",
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
           "dependencies": {
             "HarmonyX": {
               "target": "Package",
               "version": "[2.13.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "NETStandard.Library.Ref",
+              "version": "[2.1.0, 2.1.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
             }
           },
           "runtimeIdentifierGraphPath": "/usr/lib/mono/msbuild/Current/bin/RuntimeIdentifierGraph.json"

@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 
 using BrilliantSkies.Modding;
 
@@ -6,6 +7,8 @@ using HarmonyLib;
 
 using MoonSharp.Interpreter;
 using MoonSharp.Interpreter.Interop;
+
+using Unity.Mathematics;
 
 using UnityEngine; // It contains 'GamePlugin' and 'GamePlugin_PostLoad'
 
@@ -30,6 +33,8 @@ namespace LuaExtension
 		{
 			UserData.RegistrationPolicy = InteropRegistrationPolicy.Automatic;
 			UserData.RegisterAssembly();
+			UserData.RegisterAssembly(Assembly.GetAssembly(typeof(Unity.Mathematics.math)));
+			UserData.RegisterType<LuaPID>();
 			UserData.RegisterType<Vector2>();
 			UserData.RegisterType<Vector3>();
 			UserData.RegisterType<Vector4>();
@@ -37,7 +42,8 @@ namespace LuaExtension
 			UserData.RegisterType<Quaternion>();
 			UserData.RegisterType<Color>();
 			UserData.RegisterType<Color32>();
-			UserData.RegisterType<Mathf>();
+			UserData.RegisterType<Mathf>(); 
+			Unity.Mathematics.float3
 		}
 
 		/// <summary>

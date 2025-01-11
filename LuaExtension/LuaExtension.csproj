@@ -1,81 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <Nullable>enable</Nullable>
         <LangVersion>default</LangVersion>
-        <TargetFramework>net452</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <FTDModDir>${HOME}/From The Depths/Mods/</FTDModDir>
+        <AssemblyName>LuaExtension</AssemblyName>
     </PropertyGroup>
     <PropertyGroup>
-      <PostBuildEvent>cp "/mnt/fastbulk/projects/FTDMods/LuaExtension/bin/Debug/LuaExtension.dll" "${ProjectDir}/../../../../../home/omegarogue/From The Depths/Mods/LuaExtension/${TargetFileName}"
-cp "/mnt/fastbulk/projects/FTDMods/LuaExtension/bin/Debug/0Harmony.dll" "${ProjectDir}/../../../../../home/omegarogue/From The Depths/Mods/LuaExtension/0Harmony.dll"
-</PostBuildEvent>
+      <PostBuildEvent>cp "/mnt/fastbulk/projects/FTDMods/LuaExtension/bin/Debug/netstandard2.1/$(AssemblyName).dll" "$(FTDModDir)$(AssemblyName)/$(AssemblyName).dll"
+#cp "/mnt/fastbulk/projects/FTDMods/LuaExtension/bin/Debug/netstandard2.1/0Harmony.dll" "$(FTDModDir)/$(AssemblyName)/0Harmony.dll"</PostBuildEvent>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="Common">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Common.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="Core">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Core.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="DataManagement">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\DataManagement.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="Ftd">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Ftd.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="GridCasts">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\GridCasts.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="Localisation">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Localisation.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="Modding">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Modding.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="MoonSharp.Interpreter">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\MoonSharp.Interpreter.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="NetInfrastructure">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\NetInfrastructure.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="sLua">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\sLua.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="sLuaFtd">
             <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\sLuaFtd.dll</HintPath>
+            <Private>False</Private>
         </Reference>
         <Reference Include="sLuaFtdGenerated">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\sLuaFtdGenerated.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="Ui">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Ui.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Unity.Mathematics">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Unity.Mathematics.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\UnityEngine.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="UnityEngine.CoreModule">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="UnityEngine.IMGUIModule">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="UnityEngine.InputLegacyModule">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+          <Private>False</Private>
         </Reference>
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="HarmonyX" Version="2.13.0" />
+        <PackageReference Include="HarmonyX" Version="2.13.0"/>
     </ItemGroup>
     <ItemGroup>
-      <Compile Remove="Properties\**" />
+      <ReferencePathWithRefAssemblies Update="\home\omegarogue\.nuget\packages\harmonyx\2.13.0\lib\netstandard2.0\0Harmony.dll" />
     </ItemGroup>
     <ItemGroup>
-      <EmbeddedResource Remove="Properties\**" />
+      <None Remove="Lua\environment.lua" />
+      <EmbeddedResource Include="Lua\environment.lua" />
+      <None Remove="Lua\eventdriver.lua" />
     </ItemGroup>
-    <ItemGroup>
-      <None Remove="Properties\**" />
-    </ItemGroup>
+<!--    <ItemGroup>-->
+<!--      <Compile Include="Properties\AssemblyInfo.cs" />-->
+<!--    </ItemGroup>-->
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">
