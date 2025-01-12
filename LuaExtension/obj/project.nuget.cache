@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "G1icI4+LjxM=",
+  "dgSpecHash": "/r6iHLg6v8o=",
   "success": true,
   "projectFilePath": "/mnt/fastbulk/projects/FTDMods/LuaExtension/LuaExtension.csproj",
   "expectedPackageFiles": [
@@ -21,8 +21,7 @@
     "/home/omegarogue/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
     "/home/omegarogue/.nuget/packages/system.text.encodings.web/5.0.1/system.text.encodings.web.5.0.1.nupkg.sha512",
     "/home/omegarogue/.nuget/packages/system.text.json/5.0.2/system.text.json.5.0.2.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/netstandard.library.ref/2.1.0/netstandard.library.ref.2.1.0.nupkg.sha512"
+    "/home/omegarogue/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
   "logs": []
 }

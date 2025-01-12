@@ -43,7 +43,7 @@ namespace LuaExtension
 			UserData.RegisterType<Color>();
 			UserData.RegisterType<Color32>();
 			UserData.RegisterType<Mathf>(); 
-			Unity.Mathematics.float3
+			// Unity.Mathematics.float3
 		}
 
 		/// <summary>
