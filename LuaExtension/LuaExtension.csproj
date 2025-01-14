@@ -13,6 +13,9 @@
 #cp "/mnt/fastbulk/projects/FTDMods/LuaExtension/bin/Debug/netstandard2.1/0Harmony.dll" "$(FTDModDir)/$(AssemblyName)/0Harmony.dll"</PostBuildEvent>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="Breadboards">
+          <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Breadboards.dll</HintPath>
+        </Reference>
         <Reference Include="Common">
           <HintPath>..\..\..\SteamLibrary\steamapps\common\From The Depths\From_The_Depths_Data\Managed\Common.dll</HintPath>
           <Private>False</Private>
