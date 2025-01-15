@@ -3,7 +3,6 @@ using System.Reflection;
 
 using BrilliantSkies.Modding;
 
-using HarmonyLib;
 
 using MoonSharp.Interpreter;
 using MoonSharp.Interpreter.Interop;

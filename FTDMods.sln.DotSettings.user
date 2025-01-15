@@ -290,10 +290,13 @@
   &lt;Assembly Path="/home/omegarogue/From The Depths/Mods/AFLDBreadboardExtensions/afld_breadboard_extension_debug.dll" /&gt;
   &lt;Assembly Path="/home/omegarogue/.nuget/packages/moonsharp.debugger/2.0.0/lib/net40-client/MoonSharp.RemoteDebugger.dll" /&gt;
   &lt;Assembly Path="/mnt/fastbulk/projects/FTDMods/ConsoleApplication1/bin/Debug/ConsoleApplication1.exe" /&gt;
+  &lt;Assembly Path="/mnt/fastbulk/projects/FTDMods/LuaExtension/bin/Debug/netstandard2.1/LuaExtension.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">/usr/share/dotnet/sdk/8.0.111/MSBuild.dll</s:String>
 	
 	<s:String x:Key="/Default/Environment/Hierarchy/Build/SolBuilderDuo/UseMsbuildSolutionBuilder/@EntryValue">No</s:String>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=5b4c9c0e_002D9612_002D42c1_002D80a2_002Ddc3d76c1d0c5_0023ConsoleApp1/@EntryIndexedValue">True</s:Boolean>
+	
 	
 	
 	

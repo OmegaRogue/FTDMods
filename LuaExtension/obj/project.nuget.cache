@@ -1,27 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/r6iHLg6v8o=",
+  "dgSpecHash": "GEVVoA+gp1I=",
   "success": true,
   "projectFilePath": "/mnt/fastbulk/projects/FTDMods/LuaExtension/LuaExtension.csproj",
-  "expectedPackageFiles": [
-    "/home/omegarogue/.nuget/packages/harmonyx/2.13.0/harmonyx.2.13.0.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/microsoft.bcl.asyncinterfaces/5.0.0/microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/mono.cecil/0.11.5/mono.cecil.0.11.5.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/monomod.backports/1.1.2/monomod.backports.1.1.2.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/monomod.core/1.1.2/monomod.core.1.1.2.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/monomod.ilhelpers/1.1.0/monomod.ilhelpers.1.1.0.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/monomod.runtimedetour/25.1.2/monomod.runtimedetour.25.1.2.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/monomod.utils/25.0.6/monomod.utils.25.0.6.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/system.memory/4.5.4/system.memory.4.5.4.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/system.reflection.emit.ilgeneration/4.7.0/system.reflection.emit.ilgeneration.4.7.0.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/system.reflection.emit.lightweight/4.7.0/system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/system.text.encodings.web/5.0.1/system.text.encodings.web.5.0.1.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/system.text.json/5.0.2/system.text.json.5.0.2.nupkg.sha512",
-    "/home/omegarogue/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

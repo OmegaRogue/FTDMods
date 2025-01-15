@@ -96,7 +96,7 @@ end
 			if (!Running)
 				return;
 			
-			binding.CheckEvents();
+			// binding.CheckEvents();
 			RunLuaUpdate().GetAwaiter().GetResult();
 		}
 
@@ -107,7 +107,7 @@ end
 				return newText;
 			_code = !string.IsNullOrEmpty(newText) ? newText : string.Empty;
 			GetConstructableOrSubConstructable().AllMultiplayerRestricted.RPCRequest_SyncroniseBlock(this, _code);
-			SetLuaCode();
+			SetLuaCode().GetAwaiter().GetResult();
 			return newText;
 		}
 

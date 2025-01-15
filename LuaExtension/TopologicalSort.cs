@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using BrilliantSkies.Common.Circuits;
+using BrilliantSkies.Common.Circuits.ComponentTypes.Inputs;
 
 namespace LuaExtension
 {
@@ -10,6 +11,11 @@ namespace LuaExtension
 	{
 		public Component[] Sort(Board board)
 		{
+
+			board.Components.First().BInputs.;
+			var t = (board.Components.First()).BInputs[0].OurOutput.Them.Index
+			var t = (board.Components.First()).AOutputs[0].OurInputs.Them;
+			// board.Components.GetEnumerator().Current.First().AOutputs;
 			var s = new Queue<Component>(board.Components.Where(comp => comp.BInputs.Count == 0));
 
 			var l = new List<Component>();
